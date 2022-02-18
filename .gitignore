@@ -1,2 +1,4 @@
-/SRC/__pycache__/*
-/JupyterNotebook/.ipynb_checkpoints/*
+SRC/__pycache__/*
+JupyterNotebook/.ipynb_checkpoints/*
+JupyterNotebook/legend.txt
+JupyterNotebook/map.png
