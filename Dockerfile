@@ -1,5 +1,5 @@
 ### DESCRIPTION of DOCKERFILE 
-## Base image: Ubuntu Focal; 
+## Base image: Ubuntu Focal (20.04); 
 ## Softwares: Python3, Jupyter Lab, R, GRASS GIS  
 
 # Use ubuntu:focal as base image 
@@ -15,7 +15,7 @@ RUN useradd -ms /bin/bash demo_user
 # Update & upgrade system
 RUN apt-get -y update && \
     apt-get -y upgrade
-RUN apt-get install -y --no-install-recommends apt-utils
+RUN apt-get install -y --no-install-recommends apt-utils wget
 
 # Setup locales
 RUN apt-get install -y locales
@@ -43,6 +43,9 @@ ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/
 RUN chmod +x /usr/bin/tini
 
 # Install R software
+RUN echo "deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/" | tee -a /etc/apt/sources.list
+RUN wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+RUN apt-get update
 RUN apt-get install -y --no-install-recommends r-base
 
 # Install GRASS GIS
