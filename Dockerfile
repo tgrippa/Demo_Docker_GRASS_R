@@ -42,11 +42,11 @@ ENV TINI_VERSION v0.6.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
 RUN chmod +x /usr/bin/tini
 
-# Install R software
+# Install R software ('dev' package to allow compilation of Rpackages to be installed such as randomForest)
 RUN echo "deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/" | tee -a /etc/apt/sources.list
 RUN wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
 RUN apt-get update
-RUN apt-get install -y --no-install-recommends r-base
+RUN apt-get install -y --no-install-recommends r-base-dev
 
 # Install GRASS GIS
 # A compiling environment is needed to install GRASS extensions, 
