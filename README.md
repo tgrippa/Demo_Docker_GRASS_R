@@ -63,7 +63,7 @@ test_container@CONTENER_ID:~$ grass -gui
 ```
 
 ### Bash shell with root (sudo) privilege in the container
-If you need a root access to the running instance, use the following command.
+If you need a root access to the running instance, use the following command. Be carefull you would not be able to launch the GUI properly when you are in root. 
 ```
 # If you need to use the bash with root privilege (sudo)
 docker exec --user="root" -it test_container bash
