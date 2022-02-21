@@ -78,6 +78,7 @@ RUN R -e "install.packages('randomForest',dependencies=TRUE, repos='http://cran.
 #RUN R -e "install.packages('ranger',dependencies=TRUE, repos='http://cran.rstudio.com/')"
 RUN R -e "install.packages('dplyr',dependencies=TRUE, repos='http://cran.rstudio.com/')"
 RUN R -e "install.packages('rpart',dependencies=TRUE, repos='http://cran.rstudio.com/')"
+RUN R -e "install.packages('C50',dependencies=TRUE, repos='http://cran.rstudio.com/')"
 #RUN R -e "install.packages('xgboost',dependencies=TRUE, repos='http://cran.rstudio.com/')"
 RUN R -e "install.packages('plyr',dependencies=TRUE, repos='http://cran.rstudio.com/')"
 	
