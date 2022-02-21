@@ -15,7 +15,7 @@ RUN useradd -ms /bin/bash demo_user
 # Update & upgrade system
 RUN apt-get -y update && \
     apt-get -y upgrade
-RUN apt-get install -y --no-install-recommends apt-utils wget
+RUN apt-get install -y --no-install-recommends apt-utils wget dbus
 
 # Setup locales
 RUN apt-get install -y locales
@@ -67,6 +67,19 @@ RUN apt-get -y install \
 # Reduce image size
 RUN apt-get autoremove -y && \
     apt-get clean -y
+	
+# Install all R packages required for GRASS' v.class.mlR
+RUN R -e "install.packages('doParallel',dependencies=TRUE, repos='http://cran.rstudio.com/')"
+RUN R -e "install.packages('caret',dependencies=TRUE, repos='http://cran.rstudio.com/')"
+RUN R -e "install.packages('e1071',dependencies=TRUE, repos='http://cran.rstudio.com/')"
+RUN R -e "install.packages('data.table',dependencies=TRUE, repos='http://cran.rstudio.com/')"
+RUN R -e "install.packages('kernlab',dependencies=TRUE, repos='http://cran.rstudio.com/')"
+RUN R -e "install.packages('randomForest',dependencies=TRUE, repos='http://cran.rstudio.com/')"
+RUN R -e "install.packages('ranger',dependencies=TRUE, repos='http://cran.rstudio.com/')"
+RUN R -e "install.packages('dplyr',dependencies=TRUE, repos='http://cran.rstudio.com/')"
+RUN R -e "install.packages('rpart',dependencies=TRUE, repos='http://cran.rstudio.com/')"
+RUN R -e "install.packages('xgboost',dependencies=TRUE, repos='http://cran.rstudio.com/')"
+RUN R -e "install.packages('plyr',dependencies=TRUE, repos='http://cran.rstudio.com/')"
 	
 USER demo_user
 WORKDIR /home/demo_user
