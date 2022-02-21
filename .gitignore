@@ -2,3 +2,4 @@ SRC/__pycache__/*
 JupyterNotebook/.ipynb_checkpoints/*
 JupyterNotebook/legend.txt
 JupyterNotebook/map.png
+Qgis_training_sample/*.tiff.aux.xml
