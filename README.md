@@ -18,9 +18,9 @@ cd GRASSDATA
 # Download from the GRASS GIS website
 wget https://grass.osgeo.org/sampledata/north_carolina/nc_spm_08_grass7.zip
 # Unzip in the same folder
-unzip nc_basic_spm_grass7.zip
+unzip nc_spm_08_grass7.zip
 # Remove zip file. 
-rm nc_basic_spm_grass7.zip
+rm nc_spm_08_grass7.zip
 # Change directory
 cd ..
 ```
@@ -46,6 +46,11 @@ cd ..
 ```
 
 ### Run a new Docker instance (a container) based on this image
+First, create a new directory to save the different results we will produce
+```
+# Create directory
+mkdir DockerResults
+```
 Run a new docker instance based on the demo_image:grass786 image. After executing the docker command,
 you should have a Jupyter lab server running in the Docker instance.
 Click the IP address of the service and a new tab will appear in your web browser.
