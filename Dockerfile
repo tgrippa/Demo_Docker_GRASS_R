@@ -57,12 +57,11 @@ RUN apt-get install -y --fix-missing \
         build-essential
 RUN add-apt-repository -y ppa:ubuntugis/ppa && \
     apt-get -y update
-RUN apt-get -y install \
-        grass=7.8.6-1~focal1 \
-        grass-doc \
-        grass-dev \
-        grass-dev-doc \
-        grass-gui
+RUN apt-get -y install grass=7.8.6-1~focal1
+RUN apt-get -y install grass-doc
+RUN apt-get -y install grass-dev
+RUN apt-get -y install grass-dev-doc
+RUN apt-get -y install grass-gui
 
 # Reduce image size
 RUN apt-get autoremove -y && \
@@ -81,7 +80,8 @@ RUN R -e "install.packages('rpart',dependencies=TRUE, repos='http://cran.rstudio
 RUN R -e "install.packages('C50',dependencies=TRUE, repos='http://cran.rstudio.com/')"
 #RUN R -e "install.packages('xgboost',dependencies=TRUE, repos='http://cran.rstudio.com/')"
 RUN R -e "install.packages('plyr',dependencies=TRUE, repos='http://cran.rstudio.com/')"
-	
+
+EXPOSE 8888
 USER demo_user
 WORKDIR /home/demo_user
 
